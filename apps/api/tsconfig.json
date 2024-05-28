@@ -4,5 +4,13 @@
   ],
   "includes": [
     "src/**/*"
-  ]
+  ],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    }
+  }
 }
