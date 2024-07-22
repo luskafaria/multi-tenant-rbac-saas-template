@@ -62,7 +62,7 @@ model Invite {
   email     String
   role      Role
   createdAt DateTime @default(now()) @map("created_at")
-  author User?   @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  author User?   @relation(fields: [authorId], references: [id], onDelete: SetNull)
   authorId String? @map("author_id")
   organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
   organizationId String       @map("organization_id")
@@ -105,10 +105,13 @@ model Project {
   description String
   slug        String   @unique
   avatarUrl   String?  @map("avatar_url")
+  
   createdAt   DateTime @default(now()) @map("created_at")
   updatedAt   DateTime @updatedAt @map("updated_at")
+
   organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
   organizationId String       @map("organization_id")
+
   owner  User   @relation(fields: [ownerId], references: [id], onDelete: Cascade)
   ownerId String @map("owner_id")
   @@map("projects")
