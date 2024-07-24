@@ -1,5 +1,5 @@
 {
-  "name": "saas",
+  "name": "next-saas-rbac",
   "private": true,
   "scripts": {
     "build": "turbo build",
@@ -9,8 +9,8 @@
   "devDependencies": {
     "turbo": "latest"
   },
+  "packageManager": "pnpm@9.1.1",
   "engines": {
     "node": ">=18"
-  },
-  "packageManager": "pnpm@9.1.1"
+  }
 }

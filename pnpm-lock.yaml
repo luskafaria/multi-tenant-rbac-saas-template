@@ -54,9 +54,9 @@ importers:
       '@faker-js/faker':
         specifier: ^8.4.1
         version: 8.4.1
-      '@saas/eslint':
+      '@saas/eslint-config':
         specifier: workspace:*
-        version: link:../../config/eslint
+        version: link:../../config/eslint-config
       '@saas/prettier':
         specifier: workspace:*
         version: link:../../config/prettier
@@ -76,7 +76,7 @@ importers:
         specifier: ^4.10.5
         version: 4.10.5
 
-  config/eslint:
+  config/eslint-config:
     devDependencies:
       '@rocketseat/eslint-config':
         specifier: ^2.2.2
@@ -85,7 +85,7 @@ importers:
         specifier: workspace:*
         version: link:../prettier
       eslint-plugin-simple-import-sort:
-        specifier: ^12.1.0
+        specifier: ^12.0.0
         version: 12.1.0(eslint@8.57.0)
 
   config/prettier:
@@ -108,9 +108,9 @@ importers:
         specifier: ^3.23.8
         version: 3.23.8
     devDependencies:
-      '@saas/eslint':
+      '@saas/eslint-config':
         specifier: workspace:*
-        version: link:../../config/eslint
+        version: link:../../config/eslint-config
       '@saas/prettier':
         specifier: workspace:*
         version: link:../../config/prettier
@@ -123,22 +123,22 @@ importers:
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.4.5)(zod@3.23.8)
-      '@types/node':
-        specifier: ^20.14.2
-        version: 20.14.2
       zod:
         specifier: ^3.23.8
         version: 3.23.8
     devDependencies:
-      '@saas/eslint':
+      '@saas/eslint-config':
         specifier: workspace:*
-        version: link:../../config/eslint
+        version: link:../../config/eslint-config
       '@saas/prettier':
         specifier: workspace:*
         version: link:../../config/prettier
       '@saas/tsconfig':
         specifier: workspace:*
         version: link:../../config/typescript-config
+      '@types/node':
+        specifier: ^20.14.2
+        version: 20.14.2
 
 packages:
 
@@ -346,6 +346,7 @@ packages:
   '@humanwhocodes/config-array@0.11.14':
     resolution: {integrity: sha512-3T8LkOmg45BV5FICb15QQMsyUSWrQ8AygVfC7ZG32zOalnqrilm018ZVCw0eapXux8FtA33q8PSRSstjee3jSg==}
     engines: {node: '>=10.10.0'}
+    deprecated: Use @eslint/config-array instead
 
   '@humanwhocodes/module-importer@1.0.1':
     resolution: {integrity: sha512-bxveV4V8v5Yb4ncFTT3rPSgZBOpCkjfK0y4oVVVJwIuDVBRMDXrPyXRL988i5ap9m9bnyEEjWfm5WkBmtffLfA==}
@@ -353,6 +354,7 @@ packages:
 
   '@humanwhocodes/object-schema@2.0.3':
     resolution: {integrity: sha512-93zYdMES/c1D69yZiKDBj0V24vqNzB/koF26KPaagAfd3P/4gUlh3Dys5ogAK+Exi9QyzlD8x/08Zt7wIKcDcA==}
+    deprecated: Use @eslint/object-schema instead
 
   '@isaacs/cliui@8.0.2':
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
