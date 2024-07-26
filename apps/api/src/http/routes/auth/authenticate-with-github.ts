@@ -1,9 +1,10 @@
-import { prisma } from '@/lib/prisma'
 import { env } from '@saas/env'
 import type { FastifyInstance } from 'fastify'
 import type { ZodTypeProvider } from 'fastify-type-provider-zod'
-import z from 'zod'
-import { BadRequestError } from '../_errors/bad-request-error'
+import { z } from 'zod'
+
+import { BadRequestError } from '@/http/routes/_errors/bad-request-error'
+import { prisma } from '@/lib/prisma'
 
 export async function authenticateWithGithub(app: FastifyInstance) {
   app.withTypeProvider<ZodTypeProvider>().post(
@@ -11,7 +12,7 @@ export async function authenticateWithGithub(app: FastifyInstance) {
     {
       schema: {
         tags: ['auth'],
-        summary: 'Authenticated with Github',
+        summary: 'Authenticate with GitHub',
         body: z.object({
           code: z.string(),
         }),
@@ -39,7 +40,6 @@ export async function authenticateWithGithub(app: FastifyInstance) {
         env.GITHUB_OAUTH_CLIENT_REDIRECT_URI
       )
       githubOAuthURL.searchParams.set('code', code)
-      githubOAuthURL.searchParams.set('scope', 'user:email')
 
       const githubAccessTokenResponse = await fetch(githubOAuthURL, {
         method: 'POST',
@@ -71,12 +71,12 @@ export async function authenticateWithGithub(app: FastifyInstance) {
       const {
         id: githubId,
         name,
-        avatar_url: avatarUrl,
         email,
+        avatar_url: avatarUrl,
       } = z
         .object({
           id: z.number().int().transform(String),
-          avatar_url: z.string(),
+          avatar_url: z.string().url(),
           name: z.string().nullable(),
           email: z.string().nullable(),
         })
@@ -84,7 +84,7 @@ export async function authenticateWithGithub(app: FastifyInstance) {
 
       if (email === null) {
         throw new BadRequestError(
-          'Your Github account must have an e-mail to authenticate.'
+          'Your GitHub account must have an email to authenticate.'
         )
       }
 
@@ -95,8 +95,8 @@ export async function authenticateWithGithub(app: FastifyInstance) {
       if (!user) {
         user = await prisma.user.create({
           data: {
-            name,
             email,
+            name,
             avatarUrl,
           },
         })
