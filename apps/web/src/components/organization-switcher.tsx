@@ -51,7 +51,7 @@ export async function OrganizationSwitcher() {
           <DropdownMenuLabel>Organizations</DropdownMenuLabel>
           {organizations.map((organization) => (
             <Link href={`/org/${organization.slug}`} key={organization.id}>
-              <DropdownMenuItem className="cursor-pointer">
+              <DropdownMenuItem>
                 <Avatar className="mr-2 size-4">
                   {organization.avatarUrl && (
                     <AvatarImage src={organization.avatarUrl} />
@@ -64,7 +64,7 @@ export async function OrganizationSwitcher() {
           ))}
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem asChild className="cursor-pointer">
+        <DropdownMenuItem asChild>
           <Link href="/create-organization">
             <PlusCircle className="mr-2 size-4" />
             Create new
