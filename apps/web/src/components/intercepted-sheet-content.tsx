@@ -1,15 +1,17 @@
 'use client'
 
-import { cn } from '@/lib/utils'
 import * as SheetPrimitive from '@radix-ui/react-dialog'
 import { X } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import * as React from 'react'
+
+import { cn } from '@/lib/utils'
+
 import {
+  type SheetContentProps,
   SheetOverlay,
   SheetPortal,
   sheetVariants,
-  type SheetContentProps,
 } from './ui/sheet'
 
 export const InterceptedSheetContent = React.forwardRef<

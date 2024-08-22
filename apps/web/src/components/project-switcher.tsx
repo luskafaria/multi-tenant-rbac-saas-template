@@ -64,7 +64,7 @@ export function ProjectSwitcher() {
           </>
         )}
         {isLoading ? (
-          <Loader2 className="ml-auto size-4 shrink-0 text-muted-foreground animate-spin" />
+          <Loader2 className="ml-auto size-4 shrink-0 animate-spin text-muted-foreground" />
         ) : (
           <ChevronsUpDown className="ml-auto size-4 shrink-0 text-muted-foreground" />
         )}

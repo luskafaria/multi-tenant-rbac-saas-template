@@ -2,8 +2,8 @@ import { Slash } from 'lucide-react'
 import Image from 'next/image'
 
 import logo from '@/assets/logo.svg'
-
 import { ability } from '@/auth/auth'
+
 import { OrganizationSwitcher } from './organization-switcher'
 import { ProfileButton } from './profile-button'
 import { ProjectSwitcher } from './project-switcher'

@@ -1,11 +1,11 @@
-import { api } from './api-client';
+import { api } from './api-client'
 
 interface GetOrganizationsResponse {
   organizations: {
-    slug: string;
-    id: string;
-    name: string;
-    avatarUrl: string | null;
+    slug: string
+    id: string
+    name: string
+    avatarUrl: string | null
   }[]
 }
 

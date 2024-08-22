@@ -3,6 +3,7 @@ import Link from 'next/link'
 
 import { getCurrentOrg } from '@/auth/auth'
 import { getOrganizations } from '@/http/get-organizations'
+
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar'
 import {
   DropdownMenu,
@@ -20,7 +21,7 @@ export async function OrganizationSwitcher() {
   const { organizations } = await getOrganizations()
 
   const currentOrganization = organizations.find(
-    (org) => org.slug === currentOrg
+    (org) => org.slug === currentOrg,
   )
 
   return (
@@ -34,7 +35,9 @@ export async function OrganizationSwitcher() {
               )}
               <AvatarFallback />
             </Avatar>
-            <span className="truncate text-left">{currentOrganization.name}</span>
+            <span className="truncate text-left">
+              {currentOrganization.name}
+            </span>
           </>
         ) : (
           <span className="text-muted-foreground">Select organization</span>

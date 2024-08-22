@@ -1,4 +1,4 @@
-import { useState, useTransition, type FormEvent } from 'react'
+import { type FormEvent, useState, useTransition } from 'react'
 
 interface FormState {
   success: boolean
@@ -9,7 +9,7 @@ interface FormState {
 export function useFormState(
   action: (date: FormData) => Promise<FormState>,
   onSuccess?: () => Promise<void> | void,
-  initialState?: FormState
+  initialState?: FormState,
 ) {
   const [isPending, startTransition] = useTransition()
 
@@ -18,7 +18,7 @@ export function useFormState(
       success: false,
       message: null,
       errors: null,
-    }
+    },
   )
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {

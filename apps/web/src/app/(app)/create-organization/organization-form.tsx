@@ -13,7 +13,7 @@ import { createOrganizationAction } from './actions'
 
 export function OrganizationForm() {
   const [{ errors, message, success }, handleSubmit, isPending] = useFormState(
-    createOrganizationAction
+    createOrganizationAction,
   )
 
   return (
