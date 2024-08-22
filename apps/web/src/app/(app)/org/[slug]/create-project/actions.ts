@@ -3,7 +3,7 @@
 import { HTTPError } from 'ky'
 import { z } from 'zod'
 
-import { getCurrentOrg } from '@/auth/auth'
+import { getCurrentOrg } from '@/components/auth/auth'
 import { createProject } from '@/http/create-project'
 
 const projectSchema = z.object({
