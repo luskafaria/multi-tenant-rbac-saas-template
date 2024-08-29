@@ -9,6 +9,7 @@ import {
 import { getOrganization } from '@/http/get-organization'
 
 import { OrganizationForm } from '../../organization-form'
+import { Billing } from './billing'
 import { ShutdownOrganizationButton } from './shutdown-organization-button'
 
 export default async function Project() {
@@ -49,7 +50,7 @@ export default async function Project() {
           </Card>
         )}
 
-        {canGetBilling && <div>Billing</div>}
+        {canGetBilling && <Billing />}
 
         {canShutdownOrganization && (
           <Card>
