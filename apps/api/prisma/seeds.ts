@@ -15,7 +15,7 @@ async function seed() {
       {
         name: 'Jonh Doe',
         email: 'john@gmail.com',
-        avatarUrl: 'https://github.com/lucas_faria.png',
+        avatarUrl: 'https://github.com/luskafaria.png',
         passwordHash,
       },
       {
