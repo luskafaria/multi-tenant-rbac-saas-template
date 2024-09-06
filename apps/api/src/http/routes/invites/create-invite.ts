@@ -1,12 +1,12 @@
 import { auth } from '@/http/middlewares/auth'
 import { prisma } from '@/lib/prisma'
 import { getUserPermissions } from '@/utils/get-user-permissions'
+import { roleSchema } from '@saas/auth'
 import type { FastifyInstance } from 'fastify'
 import { ZodTypeProvider } from 'fastify-type-provider-zod'
 import z from 'zod'
-import { UnauthorizedError } from '../_errors/unauthorized-error'
-import { roleSchema } from '@saas/auth'
 import { BadRequestError } from '../_errors/bad-request-error'
+import { UnauthorizedError } from '../_errors/unauthorized-error'
 
 export async function createInvite(app: FastifyInstance) {
   app
@@ -50,7 +50,7 @@ export async function createInvite(app: FastifyInstance) {
 
         const { email, role } = request.body
 
-        const [, domain] = email
+        const [, domain] = email.split('@')
 
         if (
           organization.shouldAttachUsersByDomain &&

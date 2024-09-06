@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table'
 import { getInvites } from '@/http/get-invites'
 
+import { CreateInviteForm } from './create-invite-form'
 import { RevokeInviteButton } from './revoke-invite-button'
 
 export async function Invites() {
@@ -19,10 +20,10 @@ export async function Invites() {
       {canCreateInvite && (
         <Card>
           <CardHeader>
-            <CardTitle></CardTitle>
+            <CardTitle>Invite member</CardTitle>
           </CardHeader>
           <CardContent>
-            <form></form>
+            <CreateInviteForm />
           </CardContent>
         </Card>
       )}
@@ -36,7 +37,7 @@ export async function Invites() {
               {invites.map((invite) => {
                 return (
                   <TableRow key={invite.id}>
-                    <TableCell className="py-2.5" style={{ width: 48 }}>
+                    <TableCell className="py-2.5">
                       <span className="text-muted-foreground">
                         {invite.email}
                       </span>

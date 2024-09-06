@@ -13,10 +13,8 @@ export default async function MembersPage() {
     <div className="space-y-4">
       <h1 className="text-2xl font-bold">Members</h1>
 
-      <div className="space-4-y">
-        {canGetInvites && <Invites />}
-        {canGetUsers && <MembersList />}
-      </div>
+      {canGetInvites && <Invites />}
+      {canGetUsers && <MembersList />}
     </div>
   )
 }
