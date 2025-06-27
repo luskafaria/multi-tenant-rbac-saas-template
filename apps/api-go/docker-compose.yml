@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  api-go:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3334:3334"
+    depends_on:
+      - pg-go
+    environment:
+      - DB_SOURCE=postgresql://docker:docker@pg-go:5432/next-saas?sslmode=disable
+      - API_PORT=3334
+
+  pg-go:
+    image: bitnami/postgresql:latest
+    ports:
+      - "5433:5432" # Use a different host port to avoid conflict with the other pg service
+    environment:
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=next-saas
+    volumes:
+      - pg-go-data:/var/lib/postgresql/data
+
+volumes:
+  pg-go-data:
