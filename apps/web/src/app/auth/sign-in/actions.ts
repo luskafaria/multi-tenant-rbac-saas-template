@@ -4,6 +4,7 @@ import { HTTPError } from 'ky'
 import { cookies } from 'next/headers'
 import { z } from 'zod'
 
+import { security } from '@/config/security'
 import { acceptInvite } from '@/http/accept-invite'
 import { signInWithPassword } from '@/http/sign-in-with-password'
 
@@ -31,7 +32,13 @@ export async function signInWithEmailAndPassword(data: FormData) {
     })
 
     const cookieStore = await cookies()
-    cookieStore.set('token', token, { path: '/', maxAge: 60 * 60 * 24 * 7 })
+    cookieStore.set('token', token, {
+      path: '/',
+      maxAge: security.SESSION_EXPIRY_SECONDS,
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+    })
 
     const inviteId = cookieStore.get('inviteId')?.value
 

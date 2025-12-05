@@ -3,6 +3,7 @@ import type { FastifyInstance } from 'fastify'
 import type { ZodTypeProvider } from 'fastify-type-provider-zod'
 import z from 'zod'
 
+import { security } from '@/config/security'
 import { prisma } from '@/lib/prisma'
 
 import { BadRequestError } from '../_errors/bad-request-error'
@@ -41,7 +42,10 @@ export async function createAccount(app: FastifyInstance) {
         },
       })
 
-      const passwordHash = await bcrypt.hash(password, 6)
+      const passwordHash = await bcrypt.hash(
+        password,
+        security.BCRYPT_COST_FACTOR
+      )
 
       await prisma.user.create({
         data: {
