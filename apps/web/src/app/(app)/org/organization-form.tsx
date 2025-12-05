@@ -92,10 +92,10 @@ export function OrganizationForm({
             />
           </div>
           <label htmlFor="shouldAttachUsersByDomain" className="space-y-1">
-            <span className="text-sm font-medium leading-none">
+            <span className="text-sm leading-none font-medium">
               Auto-join new members
             </span>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-muted-foreground text-sm">
               This will automatically invite all members with same e-mail domain
               to this organization.
             </p>

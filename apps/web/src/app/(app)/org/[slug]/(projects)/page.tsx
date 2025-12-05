@@ -31,7 +31,7 @@ export default async function Home() {
       {canGetProject ? (
         <ProjectList />
       ) : (
-        <p className="text-sm text-muted-foreground">
+        <p className="text-muted-foreground text-sm">
           You're not allowed to see organization projects.
         </p>
       )}

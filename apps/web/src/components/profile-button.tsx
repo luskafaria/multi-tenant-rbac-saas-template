@@ -35,7 +35,7 @@ export async function ProfileButton() {
       <DropdownMenuTrigger className="flex items-center gap-3 outline-hidden">
         <div className="flex flex-col items-end">
           <span className="text-sm font-medium">{user.name}</span>
-          <span className="text-xs text-muted-foreground">{user.email}</span>
+          <span className="text-muted-foreground text-xs">{user.email}</span>
         </div>
 
         <Avatar className="size-8">
@@ -44,7 +44,7 @@ export async function ProfileButton() {
             <AvatarFallback>{getInitials(user.name)}</AvatarFallback>
           )}
         </Avatar>
-        <ChevronDown className="size-4 text-muted-foreground" />
+        <ChevronDown className="text-muted-foreground size-4" />
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuItem asChild>

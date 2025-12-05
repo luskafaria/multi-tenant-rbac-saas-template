@@ -4,6 +4,6 @@ import nodeConfig from '@saas/eslint-config/node'
 export default [
   ...nodeConfig,
   {
-    ignores: ['node_modules/', 'dist/', '.prisma/'],
+    ignores: ['node_modules/', 'dist/', 'prisma/generated/'],
   },
 ]

@@ -1,8 +1,4 @@
 {
-  "extends": [
-    "@saas/tsconfig/library.json"
-  ],
-  "includes": [
-    "index.ts"
-  ]
+  "extends": ["@saas/tsconfig/library.json"],
+  "includes": ["index.ts"]
 }

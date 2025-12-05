@@ -39,8 +39,8 @@ export async function createOrganization(app: FastifyInstance) {
         if (name) {
           const organizationBySlug = await prisma.organization.findUnique({
             where: {
-              slug: createSlug(name)
-            }
+              slug: createSlug(name),
+            },
           })
 
           if (organizationBySlug) {

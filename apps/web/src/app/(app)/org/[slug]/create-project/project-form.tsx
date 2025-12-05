@@ -21,7 +21,7 @@ export function ProjectForm() {
     () =>
       queryClient.invalidateQueries({
         queryKey: [org, 'projects'],
-      }),
+      })
   )
 
   return (

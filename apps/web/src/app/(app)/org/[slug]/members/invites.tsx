@@ -58,7 +58,7 @@ export async function Invites() {
 
               {(!invites || invites.length === 0) && (
                 <TableRow>
-                  <TableCell className="text-center text-muted-foreground">
+                  <TableCell className="text-muted-foreground text-center">
                     No invites found!
                   </TableCell>
                 </TableRow>
