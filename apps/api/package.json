@@ -15,7 +15,7 @@
     "@saas/prettier": "workspace:*",
     "@saas/tsconfig": "workspace:*",
     "@types/bcryptjs": "^2.4.6",
-    "dotenv-cli": "^7.4.2",
+    "dotenv-cli": "^11.0.0",
     "prisma": "^5.19.1",
     "tsx": "^4.19.0"
   },
