@@ -1,5 +1,5 @@
 import { prisma } from '@/lib/prisma'
-import { compare } from 'bcryptjs'
+import bcrypt from 'bcryptjs'
 import type { FastifyInstance } from 'fastify'
 import type { ZodTypeProvider } from 'fastify-type-provider-zod'
 import z from 'zod'
@@ -40,7 +40,7 @@ export async function authenticateWithPassword(app: FastifyInstance) {
         )
       }
 
-      const isPasswordValid = await compare(password, userByEmail.passwordHash)
+      const isPasswordValid = await bcrypt.compare(password, userByEmail.passwordHash)
 
       if (!isPasswordValid) {
         throw new BadRequestError('Invalid credentials')

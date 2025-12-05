@@ -1,5 +1,5 @@
 import { prisma } from '@/lib/prisma'
-import { hash } from 'bcryptjs'
+import bcrypt from 'bcryptjs'
 import type { FastifyInstance } from 'fastify'
 import type { ZodTypeProvider } from 'fastify-type-provider-zod'
 import z from 'zod'
@@ -39,7 +39,7 @@ export async function createAccount(app: FastifyInstance) {
         },
       })
 
-      const passwordHash = await hash(password, 6)
+      const passwordHash = await bcrypt.hash(password, 6)
 
       await prisma.user.create({
         data: {

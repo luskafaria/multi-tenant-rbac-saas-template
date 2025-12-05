@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker'
 import { PrismaClient } from '@prisma/client'
-import { hash } from 'bcryptjs'
+import bcrypt from 'bcryptjs'
 
 const prisma = new PrismaClient()
 
@@ -8,7 +8,7 @@ async function seed() {
   await prisma.organization.deleteMany()
   await prisma.user.deleteMany()
 
-  const passwordHash = await hash('123456', 1)
+  const passwordHash = await bcrypt.hash('123456', 1)
 
   const [user, user1, user2] = await prisma.user.createManyAndReturn({
     data: [

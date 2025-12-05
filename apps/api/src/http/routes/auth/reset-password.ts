@@ -1,5 +1,5 @@
 import { prisma } from '@/lib/prisma'
-import { hash } from 'bcryptjs'
+import bcrypt from 'bcryptjs'
 import type { FastifyInstance } from 'fastify'
 import type { ZodTypeProvider } from 'fastify-type-provider-zod'
 import z from 'zod'
@@ -34,7 +34,7 @@ export async function resetPassword(app: FastifyInstance) {
         throw new UnauthorizedError()
       }
 
-      const passwordHash = await hash(password, 6)
+      const passwordHash = await bcrypt.hash(password, 6)
 
       await prisma.$transaction([
         prisma.user.update({
