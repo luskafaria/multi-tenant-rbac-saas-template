@@ -6,7 +6,7 @@
     "dev": "pnpm env:load tsx watch src/http/server.ts",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "postinstall": "pnpm env:load prisma generate",
+    "postinstall": "SKIP_ENV_VALIDATION=true prisma generate",
     "db:migrate": "pnpm env:load prisma migrate dev",
     "db:seed": "pnpm env:load prisma db seed",
     "db:studio": "pnpm env:load prisma studio",

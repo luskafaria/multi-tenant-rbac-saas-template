@@ -55,28 +55,91 @@ Roles & permissions.
 
 ### Permissions table
 
-|                          | Administrator | Member | Billing | Anonymous |
-| ------------------------ | ------------- | ------ | ------- | --------- |
-| Update organization      | ✅            | ❌     | ❌      | ❌        |
-| Delete organization      | ✅            | ❌     | ❌      | ❌        |
-| Invite a member          | ✅            | ❌     | ❌      | ❌        |
-| Revoke an invite         | ✅            | ❌     | ❌      | ❌        |
-| List members             | ✅            | ✅     | ✅      | ❌        |
-| Transfer ownership       | ⚠️            | ❌     | ❌      | ❌        |
-| Update member role       | ✅            | ❌     | ❌      | ❌        |
-| Delete member            | ✅            | ⚠️     | ❌      | ❌        |
-| List projects            | ✅            | ✅     | ✅      | ❌        |
-| Create a new project     | ✅            | ✅     | ❌      | ❌        |
-| Update a project         | ✅            | ⚠️     | ❌      | ❌        |
-| Delete a project         | ✅            | ⚠️     | ❌      | ❌        |
-| Get billing details      | ✅            | ❌     | ✅      | ❌        |
-| Export billing details   | ✅            | ❌     | ✅      | ❌        |
+|                        | Administrator | Member | Billing | Anonymous |
+| ---------------------- | ------------- | ------ | ------- | --------- |
+| Update organization    | ✅            | ❌     | ❌      | ❌        |
+| Delete organization    | ✅            | ❌     | ❌      | ❌        |
+| Invite a member        | ✅            | ❌     | ❌      | ❌        |
+| Revoke an invite       | ✅            | ❌     | ❌      | ❌        |
+| List members           | ✅            | ✅     | ✅      | ❌        |
+| Transfer ownership     | ⚠️            | ❌     | ❌      | ❌        |
+| Update member role     | ✅            | ❌     | ❌      | ❌        |
+| Delete member          | ✅            | ⚠️     | ❌      | ❌        |
+| List projects          | ✅            | ✅     | ✅      | ❌        |
+| Create a new project   | ✅            | ✅     | ❌      | ❌        |
+| Update a project       | ✅            | ⚠️     | ❌      | ❌        |
+| Delete a project       | ✅            | ⚠️     | ❌      | ❌        |
+| Get billing details    | ✅            | ❌     | ✅      | ❌        |
+| Export billing details | ✅            | ❌     | ✅      | ❌        |
 
 > ✅ = allowed
 > ❌ = not allowed
 > ⚠️ = allowed w/ conditions
+
 #### Conditions
 
 - Only owners may transfer organization ownership;
 - Only administrators and project authors may update/delete the project;
 - Members can leave their own organization;
+
+## Project Structure
+
+```
+├── apps/
+│   ├── web/          # Next.js frontend
+│   └── api/          # Fastify backend
+├── packages/
+│   ├── auth/         # RBAC utilities (CASL)
+│   └── env/          # Environment configuration
+└── config/
+    ├── eslint-config/
+    ├── prettier/
+    └── typescript-config/
+```
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js >= 18
+- pnpm 9.15.9
+- Docker (for PostgreSQL)
+
+### Setup
+
+```bash
+# Install dependencies
+pnpm install
+
+# Start PostgreSQL
+docker compose up -d
+
+# Run database migrations
+pnpm --filter @saas/api db:migrate
+
+# Seed the database (optional)
+pnpm --filter @saas/api db:seed
+
+# Start development servers
+pnpm dev
+```
+
+## Scripts
+
+| Command          | Description                        |
+| ---------------- | ---------------------------------- |
+| `pnpm dev`       | Start all apps in development mode |
+| `pnpm build`     | Build all apps                     |
+| `pnpm lint`      | Run ESLint across all apps         |
+| `pnpm typecheck` | Run TypeScript type checking       |
+
+## CI/CD
+
+GitHub Actions workflows run on every push and PR to `main`:
+
+| Workflow     | Checks                  |
+| ------------ | ----------------------- |
+| **CI - Web** | Lint, Type Check, Build |
+| **CI - API** | Lint, Type Check        |
+
+Workflows use path filtering to only run when relevant files change.
