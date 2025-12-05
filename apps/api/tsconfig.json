@@ -1,17 +1,10 @@
 {
-  "extends": [
-    "@saas/tsconfig/node.json"
-  ],
-  "includes": [
-    "src/**/*",
-    "@types/*.d.ts"
-  ],
+  "extends": ["@saas/tsconfig/node.json"],
+  "includes": ["src/**/*", "@types/*.d.ts"],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "./src/*"
-      ]
+      "@/*": ["./src/*"]
     }
   }
 }

@@ -1,8 +1,4 @@
 {
-  "extends": [
-    "@saas/tsconfig/library.json"
-  ],
-  "includes": [
-    "src/**/*"
-  ]
+  "extends": ["@saas/tsconfig/library.json"],
+  "includes": ["src/**/*"]
 }
