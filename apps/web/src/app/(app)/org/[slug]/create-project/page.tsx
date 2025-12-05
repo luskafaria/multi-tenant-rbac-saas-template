@@ -6,7 +6,7 @@ import { ProjectForm } from './project-form'
 
 export default async function CreateProject() {
   const permissions = await ability()
-  const currentOrg = getCurrentOrg()
+  const currentOrg = await getCurrentOrg()
 
   if (permissions?.cannot('create', 'Project')) {
     redirect(`/org/${currentOrg}`)

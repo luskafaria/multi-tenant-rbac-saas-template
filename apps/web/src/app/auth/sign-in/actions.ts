@@ -30,14 +30,15 @@ export async function signInWithEmailAndPassword(data: FormData) {
       password,
     })
 
-    cookies().set('token', token, { path: '/', maxAge: 60 * 60 * 24 * 7 })
+    const cookieStore = await cookies()
+    cookieStore.set('token', token, { path: '/', maxAge: 60 * 60 * 24 * 7 })
 
-    const inviteId = cookies().get('inviteId')?.value
+    const inviteId = cookieStore.get('inviteId')?.value
 
     if (inviteId) {
       try {
         await acceptInvite(inviteId)
-        cookies().delete('inviteId')
+        cookieStore.delete('inviteId')
         console.log(inviteId)
       } catch {}
     }

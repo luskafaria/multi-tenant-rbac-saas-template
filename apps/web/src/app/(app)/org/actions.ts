@@ -66,7 +66,7 @@ export async function createOrganizationAction(data: FormData) {
       shouldAttachUsersByDomain,
     })
 
-    revalidateTag('organizations')
+    revalidateTag('organizations', 'max')
   } catch (error) {
     if (error instanceof HTTPError) {
       const { message } = await error.response.json()
@@ -91,7 +91,7 @@ export async function createOrganizationAction(data: FormData) {
 }
 
 export async function updateOrganizationAction(data: FormData) {
-  const org = getCurrentOrg()!
+  const org = (await getCurrentOrg())!
   const result = organizationSchema.safeParse(Object.fromEntries(data))
 
   if (!result.success) {
@@ -109,7 +109,7 @@ export async function updateOrganizationAction(data: FormData) {
       shouldAttachUsersByDomain,
     })
 
-    revalidateTag('organizations')
+    revalidateTag('organizations', 'max')
   } catch (error) {
     if (error instanceof HTTPError) {
       const { message } = await error.response.json()

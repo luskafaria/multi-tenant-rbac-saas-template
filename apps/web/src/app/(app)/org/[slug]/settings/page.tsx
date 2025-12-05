@@ -19,7 +19,7 @@ export default async function Project() {
   const canGetBilling = permissions?.can('get', 'Billing')
   const canShutdownOrganization = permissions?.can('delete', 'Organization')
 
-  const currentOrg = getCurrentOrg()
+  const currentOrg = await getCurrentOrg()
 
   const { organization } = await getOrganization(currentOrg!)
 
