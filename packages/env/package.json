@@ -11,11 +11,6 @@
     "@saas/tsconfig": "workspace:*",
     "@types/node": "^24.10.1"
   },
-  "eslintConfig": {
-    "extends": [
-      "@saas/eslint-config/library"
-    ]
-  },
   "prettier": "@saas/prettier",
   "dependencies": {
     "@t3-oss/env-nextjs": "^0.13.8",

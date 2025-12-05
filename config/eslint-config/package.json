@@ -2,24 +2,24 @@
   "name": "@saas/eslint-config",
   "version": "0.0.0",
   "private": true,
-  "files": [
-    "library.js",
-    "next.js",
-    "node.js"
-  ],
-  "devDependencies": {
-    "@next/eslint-plugin-next": "^16.0.7",
-    "@rocketseat/eslint-config": "^2.2.2",
-    "@saas/prettier": "workspace:*",
-    "@typescript-eslint/eslint-plugin": "^8.48.1",
-    "@typescript-eslint/parser": "^8.48.1",
-    "eslint-plugin-simple-import-sort": "^12.1.1",
-    "typescript": "^5.9.3"
+  "type": "module",
+  "exports": {
+    "./base": "./base.js",
+    "./library": "./node.js",
+    "./node": "./node.js",
+    "./next": "./next.js"
   },
-  "prettier": "@saas/prettier",
-  "eslintConfig": {
-    "extends": [
-      "./library.js"
-    ]
-  }
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "@next/eslint-plugin-next": "^16.0.7",
+    "@saas/prettier": "workspace:*",
+    "eslint": "^9.39.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "globals": "^16.5.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.48.1"
+  },
+  "prettier": "@saas/prettier"
 }

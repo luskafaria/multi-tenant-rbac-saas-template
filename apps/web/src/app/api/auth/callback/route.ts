@@ -31,7 +31,9 @@ export async function GET(request: NextRequest) {
       try {
         await acceptInvite(inviteId)
         cookieStore.delete('inviteId')
-      } catch {}
+      } catch {
+        // Silently fail if accepting invite fails
+      }
     }
 
     const redirectUrl = request.nextUrl.clone()

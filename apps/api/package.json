@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "pnpm env:load tsx watch src/http/server.ts",
+    "lint": "eslint .",
     "postinstall": "pnpm env:load prisma generate",
     "db:migrate": "pnpm env:load prisma migrate dev",
     "db:seed": "pnpm env:load prisma db seed",
@@ -38,11 +39,6 @@
     "zod": "^4.1.13"
   },
   "prettier": "@saas/prettier",
-  "eslintConfig": {
-    "extends": [
-      "@saas/eslint-config/node"
-    ]
-  },
   "prisma": {
     "seed": "tsx prisma/seeds.ts"
   }
