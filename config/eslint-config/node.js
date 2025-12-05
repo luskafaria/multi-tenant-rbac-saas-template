@@ -1,8 +1,16 @@
-/** @type {import('eslint').Linter.Config} */
-module.exports = {
-  extends: ['@rocketseat/eslint-config/node'],
-  plugins: ['simple-import-sort'],
-  rules: {
-    'simple-import-sort/imports': 'error',
+import globals from 'globals'
+
+import baseConfig from './base.js'
+
+/** @type {import('eslint').Linter.Config[]} */
+export default [
+  ...baseConfig,
+  {
+    languageOptions: {
+      globals: {
+        ...globals.node,
+        ...globals.es2022,
+      },
+    },
   },
-}
+]
