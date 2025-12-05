@@ -19,17 +19,18 @@ export async function GET(request: NextRequest) {
   try {
     const { token } = await signInWithGithub({ code })
 
-    cookies().set('token', token, {
+    const cookieStore = await cookies()
+    cookieStore.set('token', token, {
       path: '/',
       maxAge: 60 * 60 * 24 * 7,
     })
 
-    const inviteId = cookies().get('inviteId')?.value
+    const inviteId = cookieStore.get('inviteId')?.value
 
     if (inviteId) {
       try {
         await acceptInvite(inviteId)
-        cookies().delete('inviteId')
+        cookieStore.delete('inviteId')
       } catch {}
     }
 

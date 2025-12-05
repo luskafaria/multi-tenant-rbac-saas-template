@@ -12,18 +12,18 @@ import { revokeInvite } from '@/http/revoke-invite'
 import { updateMember } from '@/http/update-member'
 
 export async function removeMemberAction(memberId: string) {
-  const currentOrg = getCurrentOrg()
+  const currentOrg = await getCurrentOrg()
 
   await removeMember({
     org: currentOrg!,
     memberId,
   })
 
-  revalidateTag(`${currentOrg}/members`)
+  revalidateTag(`${currentOrg}/members`, 'max')
 }
 
 export async function updateMemberAction(memberId: string, role: Role) {
-  const currentOrg = getCurrentOrg()
+  const currentOrg = await getCurrentOrg()
 
   await updateMember({
     org: currentOrg!,
@@ -31,18 +31,18 @@ export async function updateMemberAction(memberId: string, role: Role) {
     role,
   })
 
-  revalidateTag(`${currentOrg}/members`)
+  revalidateTag(`${currentOrg}/members`, 'max')
 }
 
 export async function revokeInviteAction(inviteId: string) {
-  const currentOrg = getCurrentOrg()
+  const currentOrg = await getCurrentOrg()
 
   await revokeInvite({
     org: currentOrg!,
     inviteId,
   })
 
-  revalidateTag(`${currentOrg}/invites`)
+  revalidateTag(`${currentOrg}/invites`, 'max')
 }
 
 const inviteSchema = z.object({
@@ -60,7 +60,7 @@ export async function createInviteAction(data: FormData) {
   }
   const { email, role } = result.data
 
-  const org = getCurrentOrg()!
+  const org = (await getCurrentOrg())!
 
   try {
     await createInvite({
@@ -69,7 +69,7 @@ export async function createInviteAction(data: FormData) {
       role,
     })
 
-    revalidateTag(`${org}/invites`)
+    revalidateTag(`${org}/invites`, 'max')
   } catch (error) {
     if (error instanceof HTTPError) {
       const { message } = await error.response.json()

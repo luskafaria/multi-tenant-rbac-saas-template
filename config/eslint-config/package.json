@@ -8,7 +8,7 @@
     "node.js"
   ],
   "devDependencies": {
-    "@next/eslint-plugin-next": "^14.2.6",
+    "@next/eslint-plugin-next": "^16.0.7",
     "@rocketseat/eslint-config": "^2.2.2",
     "@saas/prettier": "workspace:*",
     "@typescript-eslint/eslint-plugin": "^8.48.1",
