@@ -41,6 +41,23 @@ export async function removeMember(app: FastifyInstance) {
           )
         }
 
+        const memberToRemove = await prisma.member.findUnique({
+          where: {
+            id: memberId,
+            organizationId: organization.id,
+          },
+        })
+
+        if (!memberToRemove) {
+          throw new UnauthorizedError('Member not found.')
+        }
+
+        if (memberToRemove.userId === organization.ownerId) {
+          throw new UnauthorizedError(
+            'Cannot remove the organization owner from members.'
+          )
+        }
+
         await prisma.member.delete({
           where: {
             id: memberId,

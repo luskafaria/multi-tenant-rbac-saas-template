@@ -42,7 +42,10 @@ export async function createAccount(app: FastifyInstance) {
         },
       })
 
-      const passwordHash = await bcrypt.hash(password, security.BCRYPT_COST_FACTOR)
+      const passwordHash = await bcrypt.hash(
+        password,
+        security.BCRYPT_COST_FACTOR
+      )
 
       await prisma.user.create({
         data: {

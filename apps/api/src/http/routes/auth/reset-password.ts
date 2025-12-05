@@ -47,7 +47,10 @@ export async function resetPassword(app: FastifyInstance) {
         throw new UnauthorizedError()
       }
 
-      const passwordHash = await bcrypt.hash(password, security.BCRYPT_COST_FACTOR)
+      const passwordHash = await bcrypt.hash(
+        password,
+        security.BCRYPT_COST_FACTOR
+      )
 
       await prisma.$transaction([
         prisma.user.update({

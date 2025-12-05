@@ -12,7 +12,14 @@ export const security = {
   PASSWORD_RESET_TOKEN_EXPIRY_MINUTES: 30,
 
   /**
-   * JWT token expiration time
+   * JWT/Session cookie expiration time in seconds
+   * 7 days = 604800 seconds
+   * Consider shorter duration (1-24h) with refresh tokens for higher security
+   */
+  SESSION_EXPIRY_SECONDS: 60 * 60 * 24 * 7,
+
+  /**
+   * JWT token expiration time (for fastify-jwt sign option)
    */
   JWT_EXPIRY: '7d',
 

@@ -9,6 +9,7 @@ export const env = createEnv({
     GH_OAUTH_CLIENT_ID: z.string(),
     GH_OAUTH_CLIENT_SECRET: z.string(),
     GH_OAUTH_CLIENT_REDIRECT_URI: z.string().url(),
+    WEB_URL: z.url(),
   },
   client: {},
   shared: {
@@ -21,6 +22,7 @@ export const env = createEnv({
     GH_OAUTH_CLIENT_ID: process.env.GH_OAUTH_CLIENT_ID,
     GH_OAUTH_CLIENT_SECRET: process.env.GH_OAUTH_CLIENT_SECRET,
     GH_OAUTH_CLIENT_REDIRECT_URI: process.env.GH_OAUTH_CLIENT_REDIRECT_URI,
+    WEB_URL: process.env.WEB_URL,
     NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
   },
   emptyStringAsUndefined: true,
