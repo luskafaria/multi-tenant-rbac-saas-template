@@ -53,7 +53,7 @@ export default async function InvitePage({ params }: InvitePageProps) {
   return (
     <main className="h-screen content-center items-center justify-center space-y-4 py-4">
       <Card className="mx-auto w-full max-w-md align-middle">
-        <CardHeader className="p-6 text-foreground dark:bg-white ">
+        <CardHeader className="p-6 text-foreground dark:bg-white">
           <div className="flex items-center gap-4">
             <Avatar className="h-12 w-12">
               {invite.author?.avatarUrl && (
@@ -99,7 +99,7 @@ export default async function InvitePage({ params }: InvitePageProps) {
 
           {isUserAuthenticated &&
             !userIsAuthenticatedWithSameEmailFromInvite && (
-              <div className="space-y-4 ">
+              <div className="space-y-4">
                 <p className="text-balance text-center text-sm leading-relaxed text-muted-foreground">
                   This invite was sent to{' '}
                   <span className="font-medium text-foreground">
