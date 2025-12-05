@@ -7,11 +7,11 @@
       "es2023",
       "DOM"
     ],
-    "module": "node16",
-    "target": "es2022",
+    "module": "ESNext",
+    "target": "ES2022",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "moduleResolution": "node16"
+    "moduleResolution": "bundler"
   }
 }

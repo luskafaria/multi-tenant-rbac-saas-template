@@ -23,7 +23,7 @@ export async function revokeInvite(app: FastifyInstance) {
             inviteId: z.string().uuid(),
           }),
           response: {
-            201: z.null(),
+            204: z.null(),
           },
         },
       },
