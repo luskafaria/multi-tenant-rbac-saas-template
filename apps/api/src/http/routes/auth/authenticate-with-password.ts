@@ -42,7 +42,10 @@ export async function authenticateWithPassword(app: FastifyInstance) {
         )
       }
 
-      const isPasswordValid = await bcrypt.compare(password, userByEmail.passwordHash)
+      const isPasswordValid = await bcrypt.compare(
+        password,
+        userByEmail.passwordHash
+      )
 
       if (!isPasswordValid) {
         throw new BadRequestError('Invalid credentials')

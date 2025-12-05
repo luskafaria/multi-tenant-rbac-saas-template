@@ -23,7 +23,7 @@ export function SignUpForm() {
     signUpAction,
     () => {
       router.push('/auth/sign-in')
-    },
+    }
   )
 
   return (

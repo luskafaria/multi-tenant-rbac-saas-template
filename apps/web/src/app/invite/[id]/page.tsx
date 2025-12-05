@@ -54,7 +54,7 @@ export default async function InvitePage({ params }: InvitePageProps) {
   return (
     <main className="h-screen content-center items-center justify-center space-y-4 py-4">
       <Card className="mx-auto w-full max-w-md align-middle">
-        <CardHeader className="p-6 text-foreground dark:bg-white">
+        <CardHeader className="text-foreground p-6 dark:bg-white">
           <div className="flex items-center gap-4">
             <Avatar className="h-12 w-12">
               {invite.author?.avatarUrl && (
@@ -66,7 +66,7 @@ export default async function InvitePage({ params }: InvitePageProps) {
               <AvatarFallback />
             </Avatar>
             <div className="grid gap-1 dark:text-black">
-              <h2 className="text-balance text-lg">
+              <h2 className="text-lg text-balance">
                 <span className="font-semibold">
                   {`${invite.author?.name ?? 'Someone'} `}
                 </span>
@@ -101,13 +101,13 @@ export default async function InvitePage({ params }: InvitePageProps) {
           {isUserAuthenticated &&
             !userIsAuthenticatedWithSameEmailFromInvite && (
               <div className="space-y-4">
-                <p className="text-balance text-center text-sm leading-relaxed text-muted-foreground">
+                <p className="text-muted-foreground text-center text-sm leading-relaxed text-balance">
                   This invite was sent to{' '}
-                  <span className="font-medium text-foreground">
+                  <span className="text-foreground font-medium">
                     {invite.email}
                   </span>{' '}
                   but you're authenticated as{' '}
-                  <span className="font-medium text-foreground">
+                  <span className="text-foreground font-medium">
                     {currentUserEmail}
                   </span>
                 </p>

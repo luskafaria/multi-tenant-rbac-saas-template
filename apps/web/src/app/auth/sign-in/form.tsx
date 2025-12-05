@@ -24,7 +24,7 @@ export function SignInForm() {
     signInWithEmailAndPassword,
     () => {
       router.push('/')
-    },
+    }
   )
 
   return (
@@ -67,7 +67,7 @@ export function SignInForm() {
 
           <Link
             href="/auth/forgot-password"
-            className="text-xs font-medium text-foreground hover:underline"
+            className="text-foreground text-xs font-medium hover:underline"
           >
             Forgot your password?
           </Link>

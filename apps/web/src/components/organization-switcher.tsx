@@ -21,12 +21,12 @@ export async function OrganizationSwitcher() {
   const { organizations } = await getOrganizations()
 
   const currentOrganization = organizations.find(
-    (org) => org.slug === currentOrg,
+    (org) => org.slug === currentOrg
   )
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className="flex w-[168px] items-center gap-2 rounded p-1 text-sm font-medium outline-hidden focus-visible:ring-2 focus-visible:ring-primary">
+      <DropdownMenuTrigger className="focus-visible:ring-primary flex w-[168px] items-center gap-2 rounded p-1 text-sm font-medium outline-hidden focus-visible:ring-2">
         {currentOrganization ? (
           <>
             <Avatar className="size-4">
@@ -42,7 +42,7 @@ export async function OrganizationSwitcher() {
         ) : (
           <span className="text-muted-foreground">Select organization</span>
         )}
-        <ChevronsUpDown className="ml-auto size-4 text-muted-foreground" />
+        <ChevronsUpDown className="text-muted-foreground ml-auto size-4" />
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="end"

@@ -51,11 +51,11 @@ export function PendingInvites() {
           <UserPlus2 className="size-4" />
           <span className="sr-only">Pending invites</span>
           {isLoading && (
-            <Loader2Icon className="absolute right-0 top-0 size-3 animate-spin" />
+            <Loader2Icon className="absolute top-0 right-0 size-3 animate-spin" />
           )}
 
           {!isLoading && !!data?.invites?.length && (
-            <div className="absolute right-0 top-0 h-3 w-3 rounded-full bg-red-500 text-center text-[8px] leading-tight" />
+            <div className="absolute top-0 right-0 h-3 w-3 rounded-full bg-red-500 text-center text-[8px] leading-tight" />
           )}
         </Button>
       </PopoverTrigger>
@@ -63,17 +63,17 @@ export function PendingInvites() {
       <PopoverContent className="w-80 space-y-2">
         <span className="block text-sm font-medium">{`Pending invites (${data?.invites?.length ?? 0})`}</span>
         {data?.invites?.length === 0 && (
-          <p className="text-sm text-muted-foreground">No invites found.</p>
+          <p className="text-muted-foreground text-sm">No invites found.</p>
         )}
 
         {data?.invites?.map((invite) => {
           return (
             <>
               <div className="space-y-2" key={invite.id}>
-                <p className="text-sm leading-relaxed text-muted-foreground">
-                  <span className="font-medium text-foreground">{`${invite.author?.name ?? 'Someone'}`}</span>{' '}
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  <span className="text-foreground font-medium">{`${invite.author?.name ?? 'Someone'}`}</span>{' '}
                   invited you to join{' '}
-                  <span className="font-medium text-foreground">
+                  <span className="text-foreground font-medium">
                     {invite.organization.name}
                   </span>{' '}
                   <span>{dayjs(invite.createdAt).fromNow()}</span>

@@ -75,14 +75,16 @@ export async function getMembers(app: FastifyInstance) {
           },
         })
 
-        const membersWithRoles = members.map((member: (typeof members)[number]) => ({
-          id: member.id,
-          role: member.role,
-          userId: member.user.id,
-          name: member.user.name,
-          email: member.user.email,
-          avatarUrl: member.user.avatarUrl,
-        }))
+        const membersWithRoles = members.map(
+          (member: (typeof members)[number]) => ({
+            id: member.id,
+            role: member.role,
+            userId: member.user.id,
+            name: member.user.name,
+            email: member.user.email,
+            avatarUrl: member.user.avatarUrl,
+          })
+        )
 
         return reply.send({
           members: membersWithRoles,

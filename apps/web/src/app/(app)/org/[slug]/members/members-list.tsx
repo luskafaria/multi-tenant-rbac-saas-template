@@ -28,7 +28,7 @@ export async function MembersList() {
 
   const canTransferOwnership = permissions?.can(
     'transfer_ownership',
-    authOrganization,
+    authOrganization
   )
   const canDeleteMember = permissions?.can('delete', 'User')
   const cannotUpdateMember = permissions?.cannot('update', 'User')
@@ -67,12 +67,12 @@ export async function MembersList() {
                         {member.name}
                         {member.userId === membership.userId && ' (me)'}
                         {organization.ownerId === member.userId && (
-                          <span className="inline-flex items-center gap-1 text-xs text-muted-foreground">
+                          <span className="text-muted-foreground inline-flex items-center gap-1 text-xs">
                             <Crown className="size-3 text-yellow-500" /> Owner
                           </span>
                         )}
                       </span>
-                      <span className="text-xs text-muted-foreground">
+                      <span className="text-muted-foreground text-xs">
                         {member.email}
                       </span>
                     </div>

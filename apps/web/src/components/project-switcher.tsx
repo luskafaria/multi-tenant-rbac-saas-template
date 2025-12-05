@@ -38,7 +38,7 @@ export function ProjectSwitcher() {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className="flex w-[168px] items-center gap-2 rounded p-1 text-sm font-medium outline-hidden focus-visible:ring-2 focus-visible:ring-primary">
+      <DropdownMenuTrigger className="focus-visible:ring-primary flex w-[168px] items-center gap-2 rounded p-1 text-sm font-medium outline-hidden focus-visible:ring-2">
         {isLoading ? (
           <>
             <Skeleton className="size-4 rounded-full" />
@@ -64,9 +64,9 @@ export function ProjectSwitcher() {
           </>
         )}
         {isLoading ? (
-          <Loader2 className="ml-auto size-4 shrink-0 animate-spin text-muted-foreground" />
+          <Loader2 className="text-muted-foreground ml-auto size-4 shrink-0 animate-spin" />
         ) : (
-          <ChevronsUpDown className="ml-auto size-4 shrink-0 text-muted-foreground" />
+          <ChevronsUpDown className="text-muted-foreground ml-auto size-4 shrink-0" />
         )}
       </DropdownMenuTrigger>
       <DropdownMenuContent

@@ -1,5 +1,6 @@
 import js from '@eslint/js'
 import prettier from 'eslint-config-prettier'
+import prettierPlugin from 'eslint-plugin-prettier'
 import simpleImportSort from 'eslint-plugin-simple-import-sort'
 import tseslint from 'typescript-eslint'
 
@@ -11,9 +12,11 @@ export default [
   {
     plugins: {
       'simple-import-sort': simpleImportSort,
+      prettier: prettierPlugin,
     },
     rules: {
       'simple-import-sort/imports': 'error',
+      'prettier/prettier': 'error',
       '@typescript-eslint/no-explicit-any': 'warn',
       '@typescript-eslint/no-unused-vars': [
         'warn',
