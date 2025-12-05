@@ -19,13 +19,13 @@ export async function Header() {
       <div className="flex items-center gap-3">
         <Image src={logo} className="size-6 dark:invert" alt="logo" />
 
-        <Slash className="size-3 -rotate-[24deg] text-border" />
+        <Slash className="size-3 -rotate-24 text-border" />
 
         <OrganizationSwitcher />
 
         {permissions?.can('get', 'Project') && (
           <>
-            <Slash className="size-3 -rotate-[24deg] text-border" />
+            <Slash className="size-3 -rotate-24 text-border" />
             <ProjectSwitcher />
           </>
         )}
